@@ -68,31 +68,25 @@ const PETS = [
   })
   
   // Твой код:
-  
+
 let petsCount = 0;
 
-petShop.addEventListener('click', (event) => {
-  const targetElement = event.target;
+petShop.addEventListener('click', function (event) {
 
-  if (targetElement.classList.contains('pet')) {
+  if (event.target.classList.contains('pet')) {
+
+    const petId = event.target.id;
+    
     if (cart.length < 3) {
-      const petId = targetElement.id;
-      cart.push(petId);
-      updateCartDisplay();
+      cart.push(petId); 
+      updateCartDisplay(); 
+      messageBox.textContent = ''; 
     } else {
-      showMessageBox('Вы не можете добавить более 3 питомцев');
+      messageBox.textContent = 'Вы не можете добавить более 3 питомцев';
     }
   }
 });
 
-function showMessageBox(message) {
-  messageBox.textContent = message;
-  messageBox.style.display = 'block'; 
-}
-
-function closeMessageBox() {
-  messageBox.style.display = 'none'; 
-}
 
 
 
